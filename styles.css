@@ -1,0 +1,151 @@
+/* ==========================================================================
+   MAISON VALLON — Design tokens & reusable component classes
+   Hoja de estilos genérica y reutilizable. Cualquier vista nueva (Catálogo,
+   Producto, Carrito, Checkout) debe enlazar este archivo y usar SOLO estas
+   variables/clases — no hardcodear colores, fuentes ni espaciados nuevos.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap');
+
+:root {
+  /* ---- Color: base ---- */
+  --color-bg: #f3f2f2;          /* fondo general */
+  --color-surface: #eae9e9;     /* fondo de tarjetas / superficies */
+  --color-text: #201e1d;        /* texto principal */
+  --color-text-muted: rgba(32, 30, 29, 0.6);
+  --color-accent: #ec3013;      /* acento único de marca (rojo) */
+  --color-divider: rgba(32, 30, 29, 0.4); /* líneas de 2px */
+
+  /* ---- Color: rampa de acento (100 claro → 900 oscuro) ---- */
+  --color-accent-100: #fff2ef;
+  --color-accent-200: #ffe0d9;
+  --color-accent-300: #ffc4b8;
+  --color-accent-600: #dd2b0f;  /* hover */
+  --color-accent-700: #ae1800; /* active/pressed */
+  --color-accent-800: #7c1405;
+
+  /* ---- Color: rampa neutra ---- */
+  --color-neutral-100: #f8f4f4;
+  --color-neutral-200: #eae7e7;
+  --color-neutral-300: #d7d3d3;
+  --color-neutral-400: #bab6b6;
+  --color-neutral-500: #9b9797;
+  --color-neutral-600: #7d7979;
+  --color-neutral-700: #605d5d;
+  --color-neutral-800: #444141;
+  --color-neutral-900: #2d2b2b;
+
+  /* ---- Tipografía ---- */
+  --font-heading: 'Archivo', system-ui, sans-serif;
+  --font-body: 'Archivo', system-ui, sans-serif;
+  --font-weight-heading: 800;
+
+  /* ---- Escala de espaciados ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ---- Radios de borde ----
+     Sistema arquitectónico: esquinas vivas, radio 0 en todas partes. */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+
+  /* ---- Elevación ---- */
+  --shadow-sm: 0 1px 2px rgba(45, 43, 43, 0.14);
+  --shadow-md: 0 3px 10px rgba(45, 43, 43, 0.16);
+  --shadow-lg: 0 12px 32px rgba(45, 43, 43, 0.22);
+
+  /* ---- Breakpoints usados (Tailwind, informativo — Tailwind ya los aplica) ----
+     sm: 640px | md: 768px | lg: 1024px | xl: 1280px */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-heading);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+a { color: var(--color-accent); text-underline-offset: 3px; }
+a:hover { color: var(--color-accent-600); }
+
+img { display: block; max-width: 100%; }
+
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+
+.grayscale { filter: grayscale(1) contrast(1.08); }
+
+/* — regla divisoria fuerte — */
+.hr { height: 2px; border: 0; margin: 0; background: var(--color-divider); }
+
+/* — botones — */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  cursor: pointer; text-decoration: none; white-space: nowrap;
+  font-family: var(--font-heading); font-weight: var(--font-weight-heading);
+  font-size: 14px; line-height: 1.2; color: var(--color-text);
+  background: transparent; border: 1px solid transparent;
+  padding: var(--space-2) calc(var(--space-3) * 1.2);
+  border-radius: var(--radius-md);
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+.btn-primary { background: var(--color-accent); color: var(--color-bg); }
+.btn-primary:hover { background: var(--color-accent-600); color: var(--color-bg); }
+.btn-primary:active { background: var(--color-accent-700); }
+.btn-secondary { border-color: var(--color-divider); }
+.btn-secondary:hover { background: rgba(32, 30, 29, 0.07); }
+.btn-ghost { color: var(--color-accent); padding-inline: var(--space-1); }
+.btn-ghost:hover { background: rgba(236, 48, 19, 0.1); }
+.btn-icon { width: 40px; height: 40px; padding: 0; }
+
+/* — tags / etiquetas — */
+.tag {
+  display: inline-flex; align-items: center; font-size: 11px;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 0;
+}
+.tag-accent { background: var(--color-accent-100); color: var(--color-accent-800); }
+.tag-neutral { background: var(--color-neutral-100); color: var(--color-neutral-800); }
+
+/* — tarjetas de producto — */
+.card {
+  display: flex; flex-direction: column; gap: var(--space-2);
+  background: var(--color-surface); border-radius: var(--radius-md);
+}
+.card-title {
+  font-family: var(--font-heading); font-weight: var(--font-weight-heading);
+  font-size: 16px; line-height: 1.25;
+}
+.card-meta { font-size: 13px; color: var(--color-text-muted); }
+
+/* — navegación — */
+.nav-link { color: inherit; text-decoration: none; font-size: 14px; }
+.nav-link:hover, .nav-link[aria-current='page'] { color: var(--color-accent); }
+
+/* — placeholder de imagen (rayas diagonales + etiqueta) — */
+.img-placeholder {
+  background-image: repeating-linear-gradient(
+    45deg, var(--color-neutral-300), var(--color-neutral-300) 2px,
+    var(--color-neutral-200) 2px, var(--color-neutral-200) 12px
+  );
+}
