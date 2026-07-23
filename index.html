@@ -62,25 +62,25 @@
 <body>
 
   <!-- NAVBAR START -->
-  <header class="relative bg-bg border-b border-divider">
+  <header class="sticky top-0 z-50 bg-bg border-b border-divider">
     <input type="checkbox" id="nav-menu-toggle" class="peer hidden" />
 
     <nav class="mx-auto max-w-7xl h-14 px-4 md:px-6 flex items-center justify-between">
       <!-- Izquierda: hamburguesa (móvil/tablet) + logo -->
-      <div class="flex items-center gap-3">
-        <label for="nav-menu-toggle" class="lg:hidden flex items-center justify-center w-9 h-9 -ml-2 cursor-pointer text-text" aria-label="Abrir menú">
+      <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+        <label for="nav-menu-toggle" class="lg:hidden shrink-0 flex items-center justify-center w-9 h-9 -ml-2 cursor-pointer text-text" aria-label="Abrir menú">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
           </svg>
         </label>
 
-        <a href="index.html" class="font-heading font-extrabold text-lg tracking-tight text-text">
+        <a href="index.html" class="font-heading font-extrabold text-base sm:text-lg tracking-tight text-text truncate">
           MAISON VALLON
         </a>
       </div>
 
       <!-- Derecha: búsqueda + cuenta + carrito -->
-      <div class="flex items-center gap-1 md:gap-3">
+      <div class="flex items-center gap-0.5 sm:gap-1 md:gap-3 shrink-0">
         <!-- Búsqueda (desktop) -->
         <div class="hidden md:flex items-center gap-2 bg-surface h-9 w-48 lg:w-64 px-3">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0 text-text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -130,6 +130,419 @@
     </div>
   </header>
   <!-- NAVBAR END -->
+
+  <main>
+
+    <!-- HERO START -->
+    <section
+      class="relative overflow-hidden"
+      style="background-image: linear-gradient(135deg, var(--color-neutral-900), var(--color-neutral-800)), repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 2px, transparent 2px 14px);"
+      aria-label="Colección destacada"
+    >
+      <div class="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 lg:py-32 flex flex-col items-start gap-4 md:gap-6">
+        <span class="tag bg-accent text-bg">COLECCIÓN OTOÑO</span>
+        <h1 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-bg max-w-2xl">
+          Piezas atemporales, hechas para durar
+        </h1>
+        <p class="text-sm md:text-base text-neutral-300 max-w-md">
+          Materiales nobles y confección artesanal en Francia, pensadas para acompañarte temporada tras temporada.
+        </p>
+        <a href="#" class="btn btn-primary mt-2">Descubrir la colección Otoño</a>
+      </div>
+
+      <!-- Flechas de navegación (solo visuales) -->
+      <button type="button" aria-label="Slide anterior" class="hidden sm:flex absolute left-3 md:left-6 top-1/2 -translate-y-1/2 items-center justify-center w-10 h-10 text-bg/80 hover:text-bg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+      </button>
+      <button type="button" aria-label="Siguiente slide" class="hidden sm:flex absolute right-3 md:right-6 top-1/2 -translate-y-1/2 items-center justify-center w-10 h-10 text-bg/80 hover:text-bg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </button>
+
+      <!-- Dots indicadores (solo visuales) -->
+      <div class="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-bg"></span>
+        <span class="w-2 h-2 rounded-full bg-bg/40"></span>
+        <span class="w-2 h-2 rounded-full bg-bg/40"></span>
+      </div>
+    </section>
+    <!-- HERO END -->
+
+    <!-- NUEVOS LANZAMIENTOS START -->
+    <section class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 sm:gap-4 mb-6 md:mb-8">
+        <h2 class="font-heading font-extrabold text-2xl md:text-3xl text-text">Nuevos lanzamientos</h2>
+        <a href="#" class="nav-link whitespace-nowrap">Ver todos los nuevos lanzamientos →</a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+        <article class="card">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Camisas</span>
+            <h3 class="card-title">Camisa Lin Écru</h3>
+            <p class="card-meta">Lino orgánico · Francia</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">95 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Calzado</span>
+            <h3 class="card-title">Botines Cuir Noir</h3>
+            <p class="card-meta">Cuero curtido vegetal</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">168 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Pantalones</span>
+            <h3 class="card-title">Pantalón Chino Sable</h3>
+            <p class="card-meta">Algodón peinado</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">78 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Accesorios</span>
+            <h3 class="card-title">Cinturón Cuir Tressé</h3>
+            <p class="card-meta">Cuero trenzado a mano</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">45 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Camisas</span>
+            <h3 class="card-title">Camisa Popeline Rayée</h3>
+            <p class="card-meta">Popelina de algodón</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">89 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Calzado</span>
+            <h3 class="card-title">Mocasín Daim Camel</h3>
+            <p class="card-meta">Ante · suela de cuero</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">145 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Pantalones</span>
+            <h3 class="card-title">Pantalón Lana Fluide</h3>
+            <p class="card-meta">Lana fría, corte recto</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">112 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Accesorios</span>
+            <h3 class="card-title">Écharpe Laine Mérinos</h3>
+            <p class="card-meta">Lana merino extrafina</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">58 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+    <!-- NUEVOS LANZAMIENTOS END -->
+
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <hr class="hr" />
+    </div>
+
+    <!-- MÁS VENDIDOS START -->
+    <section class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 sm:gap-4 mb-6 md:mb-8">
+        <h2 class="font-heading font-extrabold text-2xl md:text-3xl text-text">Más vendidos</h2>
+        <a href="#" class="nav-link whitespace-nowrap">Ver todos los más vendidos →</a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+        <article class="card">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Camisas</span>
+            <h3 class="card-title">Camisa Oxford Blanche</h3>
+            <p class="card-meta">Algodón oxford</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">82 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Calzado</span>
+            <h3 class="card-title">Sneakers Cuir Blanc</h3>
+            <p class="card-meta">Piel plena flor</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">135 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Pantalones</span>
+            <h3 class="card-title">Pantalón Droit Anthracite</h3>
+            <p class="card-meta">Lana y algodón</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">98 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Accesorios</span>
+            <h3 class="card-title">Sac Bandoulière Cuir</h3>
+            <p class="card-meta">Cuero de grano completo</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">165 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Camisas</span>
+            <h3 class="card-title">Camisa Flanelle Carreaux</h3>
+            <p class="card-meta">Franela de algodón</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">92 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Calzado</span>
+            <h3 class="card-title">Bottes Chelsea Marron</h3>
+            <p class="card-meta">Cuero engrasado</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">175 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Pantalones</span>
+            <h3 class="card-title">Jean Brut Selvedge</h3>
+            <p class="card-meta">Denim japonés 14oz</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">120 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Accesorios</span>
+            <h3 class="card-title">Casquette Laine</h3>
+            <p class="card-meta">Lana virgen</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">39 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+    <!-- MÁS VENDIDOS END -->
+
+  </main>
+
+  <!-- FOOTER START -->
+  <footer class="bg-surface border-t border-divider">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+
+        <!-- Columna 1: marca -->
+        <div class="flex flex-col gap-2">
+          <p class="font-heading font-extrabold text-lg text-text">MAISON VALLON</p>
+          <p class="text-sm text-text-muted max-w-xs">Moda atemporal, diseñada y confeccionada en Francia.</p>
+        </div>
+
+        <!-- Columna 2: categorías -->
+        <div class="flex flex-col gap-3">
+          <h3 class="font-heading font-extrabold text-xs uppercase tracking-wider text-text-muted">Categorías</h3>
+          <nav class="flex flex-col gap-2">
+            <a href="#" class="nav-link">Calzado</a>
+            <a href="#" class="nav-link">Camisas</a>
+            <a href="#" class="nav-link">Pantalones</a>
+            <a href="#" class="nav-link">Accesorios</a>
+          </nav>
+        </div>
+
+        <!-- Columna 3: legal -->
+        <div class="flex flex-col gap-3">
+          <h3 class="font-heading font-extrabold text-xs uppercase tracking-wider text-text-muted">Legal</h3>
+          <nav class="flex flex-col gap-2">
+            <a href="#" class="nav-link">Términos y condiciones</a>
+            <a href="#" class="nav-link">Política de privacidad</a>
+            <a href="#" class="nav-link">Sobre la marca</a>
+          </nav>
+        </div>
+
+        <!-- Columna 4: contacto -->
+        <div class="flex flex-col gap-3">
+          <h3 class="font-heading font-extrabold text-xs uppercase tracking-wider text-text-muted">Contacto</h3>
+          <address class="flex flex-col gap-2 text-sm text-text-muted not-italic">
+            <a href="mailto:contact@maisonvallon.fr" class="nav-link">contact@maisonvallon.fr</a>
+            <a href="tel:+33145678900" class="nav-link">+33 1 45 67 89 00</a>
+            <span>12 Rue de la Paix, 75002 Paris, Francia</span>
+          </address>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="border-t border-divider">
+      <p class="max-w-7xl mx-auto px-4 md:px-6 py-4 text-center text-xs text-text-muted">
+        © 2026 Maison Vallon. Todos los derechos reservados.
+      </p>
+    </div>
+  </footer>
+  <!-- FOOTER END -->
 
 </body>
 </html>
