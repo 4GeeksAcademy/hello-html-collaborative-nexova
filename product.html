@@ -124,14 +124,89 @@
 
   <main>
     <section class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16" aria-labelledby="product-title">
-      <div class="flex flex-col gap-3 border-b border-divider pb-6">
-        <p class="text-sm text-text-muted">Inicio / Producto</p>
-        <h1 id="product-title" class="font-heading font-extrabold text-3xl md:text-4xl text-text">
-          Vista de producto
+      <div class="flex flex-col gap-3 border-b border-divider pb-6 md:pb-8">
+        <p class="text-sm text-text-muted">Inicio / Abrigos / Producto</p>
+        <h1 id="product-title" class="font-heading font-extrabold text-3xl md:text-4xl lg:text-5xl text-text">
+          Manteau Atelier Charbon
         </h1>
         <p class="max-w-2xl text-sm md:text-base text-text-muted">
-          Base de implementación para la ficha de producto de Maison Vallon.
+          Abrigo estructurado de lana virgen con confección francesa y silueta recta para uso urbano y formal.
         </p>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 md:px-6 pb-12 md:pb-16" aria-labelledby="product-detail-title">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+        <figure class="flex flex-col gap-4">
+          <div class="relative overflow-hidden bg-surface shadow-md">
+            <div class="img-placeholder aspect-[4/5] w-full"></div>
+            <span class="absolute left-4 top-4 tag bg-accent text-bg">NUEVA COLECCIÓN</span>
+          </div>
+          <figcaption class="text-sm text-text-muted">
+            Vista principal del Manteau Atelier Charbon en tejido de lana virgen y acabado estructurado.
+          </figcaption>
+        </figure>
+
+        <article class="flex flex-col gap-8" aria-labelledby="product-detail-title">
+          <div class="flex flex-col gap-4">
+            <div class="flex items-center gap-3">
+              <span class="tag tag-neutral">Abrigos</span>
+              <span class="text-sm text-text-muted">Referencia MV-CT-2046</span>
+            </div>
+
+            <div class="flex flex-col gap-3">
+              <h2 id="product-detail-title" class="font-heading font-extrabold text-2xl md:text-3xl text-text">
+                Detalle principal del producto
+              </h2>
+              <p class="text-sm md:text-base text-text-muted max-w-xl">
+                Una pieza diseñada para entretiempo y jornadas frías, con estructura limpia, hombro suave y caída elegante.
+              </p>
+            </div>
+
+            <div class="flex flex-col gap-2 border-y border-divider py-4">
+              <p class="font-heading font-extrabold text-3xl text-accent">249 €</p>
+              <p class="text-sm text-text-muted">Impuestos incluidos. Envío calculado al finalizar la compra.</p>
+            </div>
+          </div>
+
+          <form class="flex flex-col gap-6" action="#" method="get">
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <div class="flex flex-col gap-2">
+                <label for="product-size" class="font-heading font-extrabold text-sm uppercase tracking-wider text-text">
+                  Talla
+                </label>
+                <select id="product-size" name="size" class="h-12 border border-divider bg-surface px-3 text-sm text-text outline-none focus:border-accent">
+                  <option value="s">S</option>
+                  <option value="m" selected>M</option>
+                  <option value="l">L</option>
+                  <option value="xl">XL</option>
+                </select>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <label for="product-quantity" class="font-heading font-extrabold text-sm uppercase tracking-wider text-text">
+                  Cantidad
+                </label>
+                <input id="product-quantity" name="quantity" type="number" min="1" value="1" class="h-12 border border-divider bg-surface px-3 text-sm text-text outline-none focus:border-accent" />
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <button type="submit" class="btn btn-primary h-12 px-6 text-sm uppercase tracking-wide sm:min-w-[220px]">
+                Agregar al carrito
+              </button>
+              <a href="#" class="btn btn-secondary h-12 px-6 text-sm uppercase tracking-wide sm:min-w-[220px]">
+                Añadir a favoritos
+              </a>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4 border-t border-divider pt-6 text-sm text-text-muted sm:grid-cols-3">
+              <p><span class="font-heading font-extrabold text-text">Composición:</span> 90% lana virgen, 10% cachemira.</p>
+              <p><span class="font-heading font-extrabold text-text">Forro:</span> algodón transpirable con acabado suave.</p>
+              <p><span class="font-heading font-extrabold text-text">Entrega:</span> despacho en 24-48 horas laborables.</p>
+            </div>
+          </form>
+        </article>
       </div>
     </section>
   </main>
