@@ -87,8 +87,10 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m1.85-5.4a7.25 7.25 0 11-14.5 0 7.25 7.25 0 0114.5 0z" />
           </svg>
           <input
+            id="catalog-search"
             type="search"
             placeholder="Buscar productos..."
+            aria-label="Buscar productos en el catálogo"
             class="w-full bg-transparent text-sm text-text placeholder:text-text-muted outline-none"
           />
         </div>
@@ -108,12 +110,19 @@
         </a>
 
         <!-- Carrito -->
-        <a href="#" class="relative flex items-center justify-center w-9 h-9 text-text" aria-label="Carrito, 2 artículos">
+        <a
+          href="#cart-drawer"
+          id="cart-toggle"
+          class="relative flex items-center justify-center w-9 h-9 text-text"
+          aria-label="Abrir carrito"
+          aria-controls="cart-drawer"
+          aria-expanded="false"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
           </svg>
-          <span class="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 rounded-full bg-accent text-bg text-[10px] font-heading font-bold leading-none">
-            2
+          <span id="cart-badge" class="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 rounded-full bg-accent text-bg text-[10px] font-heading font-bold leading-none" hidden>
+            0
           </span>
         </a>
       </div>
@@ -171,21 +180,80 @@
     </section>
     <!-- HERO END -->
 
-    <!-- NUEVOS LANZAMIENTOS START -->
+    <!-- CATALOG START -->
     <section class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 sm:gap-4 mb-6 md:mb-8">
-        <h2 class="font-heading font-extrabold text-2xl md:text-3xl text-text">Nuevos lanzamientos</h2>
-        <a href="#" class="nav-link whitespace-nowrap">Ver todos los nuevos lanzamientos →</a>
+        <div class="flex flex-col gap-2">
+          <span class="tag bg-accent text-bg self-start">CATÁLOGO</span>
+          <h2 class="font-heading font-extrabold text-2xl md:text-3xl text-text">Selección completa Maison Vallon</h2>
+        </div>
+        <p id="catalog-count" class="text-sm text-text-muted">Mostrando 20 productos</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <!-- FILTER BAR START -->
+      <div class="filter-bar" aria-label="Filtros del catálogo">
+        <button
+          type="button"
+          class="btn btn-secondary filter-trigger"
+          data-filter-target="filter-category-panel"
+          aria-expanded="false"
+          aria-controls="filter-category-panel"
+        >
+          Categoría
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary filter-trigger"
+          data-filter-target="filter-size-panel"
+          aria-expanded="false"
+          aria-controls="filter-size-panel"
+        >
+          Talla
+        </button>
+      </div>
 
-        <article class="card">
+      <div class="filter-panels" aria-label="Opciones de filtro">
+        <div id="filter-category-panel" class="filter-panel" hidden>
+          <label class="filter-field" for="filter-category-select">
+            <span class="filter-field__label">Filtrar por categoría</span>
+            <select id="filter-category-select" class="filter-field__control" name="category">
+              <option selected>Todas las categorías</option>
+              <option>Camisas</option>
+              <option>Calzado</option>
+              <option>Pantalones</option>
+              <option>Accesorios</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="filter-size-panel" class="filter-panel" hidden>
+          <label class="filter-field" for="filter-size-select">
+            <span class="filter-field__label">Filtrar por talla</span>
+            <select id="filter-size-select" class="filter-field__control" name="size">
+              <option selected>Todas las tallas</option>
+              <option>XS</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+              <option>40</option>
+              <option>41</option>
+              <option>42</option>
+              <option>43</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <!-- FILTER BAR END -->
+
+      <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8">
+
+        <article class="card catalog-card" data-category="Camisas" data-size="M">
           <div class="img-placeholder aspect-[3/4] w-full"></div>
           <div class="px-3 pb-3 flex flex-col gap-1">
             <span class="tag tag-neutral self-start">Camisas</span>
             <h3 class="card-title">Camisa Lin Écru</h3>
-            <p class="card-meta">Lino orgánico · Francia</p>
+            <p class="card-meta">Lino orgánico · Talla M</p>
             <div class="flex items-center justify-between mt-1">
               <p class="font-heading font-extrabold text-accent">95 €</p>
               <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
@@ -198,12 +266,12 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card catalog-card" data-category="Calzado" data-size="42">
           <div class="img-placeholder aspect-[3/4] w-full"></div>
           <div class="px-3 pb-3 flex flex-col gap-1">
             <span class="tag tag-neutral self-start">Calzado</span>
             <h3 class="card-title">Botines Cuir Noir</h3>
-            <p class="card-meta">Cuero curtido vegetal</p>
+            <p class="card-meta">Cuero curtido vegetal · Talla 42</p>
             <div class="flex items-center justify-between mt-1">
               <p class="font-heading font-extrabold text-accent">168 €</p>
               <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
@@ -216,12 +284,12 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card catalog-card" data-category="Pantalones" data-size="L">
           <div class="img-placeholder aspect-[3/4] w-full"></div>
           <div class="px-3 pb-3 flex flex-col gap-1">
             <span class="tag tag-neutral self-start">Pantalones</span>
             <h3 class="card-title">Pantalón Chino Sable</h3>
-            <p class="card-meta">Algodón peinado</p>
+            <p class="card-meta">Algodón peinado · Talla L</p>
             <div class="flex items-center justify-between mt-1">
               <p class="font-heading font-extrabold text-accent">78 €</p>
               <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
@@ -234,12 +302,12 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card catalog-card" data-category="Accesorios" data-size="Única">
           <div class="img-placeholder aspect-[3/4] w-full"></div>
           <div class="px-3 pb-3 flex flex-col gap-1">
             <span class="tag tag-neutral self-start">Accesorios</span>
             <h3 class="card-title">Cinturón Cuir Tressé</h3>
-            <p class="card-meta">Cuero trenzado a mano</p>
+            <p class="card-meta">Cuero trenzado a mano · Talla única</p>
             <div class="flex items-center justify-between mt-1">
               <p class="font-heading font-extrabold text-accent">45 €</p>
               <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
@@ -252,12 +320,12 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card catalog-card" data-category="Camisas" data-size="S">
           <div class="img-placeholder aspect-[3/4] w-full"></div>
           <div class="px-3 pb-3 flex flex-col gap-1">
             <span class="tag tag-neutral self-start">Camisas</span>
             <h3 class="card-title">Camisa Popeline Rayée</h3>
-            <p class="card-meta">Popelina de algodón</p>
+            <p class="card-meta">Popelina de algodón · Talla S</p>
             <div class="flex items-center justify-between mt-1">
               <p class="font-heading font-extrabold text-accent">89 €</p>
               <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
@@ -270,12 +338,12 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card catalog-card" data-category="Calzado" data-size="41">
           <div class="img-placeholder aspect-[3/4] w-full"></div>
           <div class="px-3 pb-3 flex flex-col gap-1">
             <span class="tag tag-neutral self-start">Calzado</span>
             <h3 class="card-title">Mocasín Daim Camel</h3>
-            <p class="card-meta">Ante · suela de cuero</p>
+            <p class="card-meta">Ante · suela de cuero · Talla 41</p>
             <div class="flex items-center justify-between mt-1">
               <p class="font-heading font-extrabold text-accent">145 €</p>
               <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
@@ -288,12 +356,12 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card catalog-card" data-category="Pantalones" data-size="M">
           <div class="img-placeholder aspect-[3/4] w-full"></div>
           <div class="px-3 pb-3 flex flex-col gap-1">
             <span class="tag tag-neutral self-start">Pantalones</span>
             <h3 class="card-title">Pantalón Lana Fluide</h3>
-            <p class="card-meta">Lana fría, corte recto</p>
+            <p class="card-meta">Lana fría, corte recto · Talla M</p>
             <div class="flex items-center justify-between mt-1">
               <p class="font-heading font-extrabold text-accent">112 €</p>
               <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
@@ -306,12 +374,12 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card catalog-card" data-category="Accesorios" data-size="Única">
           <div class="img-placeholder aspect-[3/4] w-full"></div>
           <div class="px-3 pb-3 flex flex-col gap-1">
             <span class="tag tag-neutral self-start">Accesorios</span>
             <h3 class="card-title">Écharpe Laine Mérinos</h3>
-            <p class="card-meta">Lana merino extrafina</p>
+            <p class="card-meta">Lana merino extrafina · Talla única</p>
             <div class="flex items-center justify-between mt-1">
               <p class="font-heading font-extrabold text-accent">58 €</p>
               <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
@@ -324,16 +392,233 @@
           </div>
         </article>
 
+        <article class="card catalog-card" data-category="Camisas" data-size="L">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Camisas</span>
+            <h3 class="card-title">Camisa Oxford Blanche</h3>
+            <p class="card-meta">Algodón oxford · Talla L</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">82 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card catalog-card" data-category="Calzado" data-size="43">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Calzado</span>
+            <h3 class="card-title">Sneakers Cuir Blanc</h3>
+            <p class="card-meta">Piel plena flor · Talla 43</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">135 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card catalog-card" data-category="Pantalones" data-size="S">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Pantalones</span>
+            <h3 class="card-title">Pantalón Droit Anthracite</h3>
+            <p class="card-meta">Lana y algodón · Talla S</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">98 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card catalog-card" data-category="Accesorios" data-size="Única">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Accesorios</span>
+            <h3 class="card-title">Sac Bandoulière Cuir</h3>
+            <p class="card-meta">Cuero de grano completo · Talla única</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">165 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card catalog-card" data-category="Camisas" data-size="XL">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Camisas</span>
+            <h3 class="card-title">Camisa Flanelle Carreaux</h3>
+            <p class="card-meta">Franela de algodón · Talla XL</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">92 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card catalog-card" data-category="Calzado" data-size="40">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Calzado</span>
+            <h3 class="card-title">Bottes Chelsea Marron</h3>
+            <p class="card-meta">Cuero engrasado · Talla 40</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">175 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card catalog-card" data-category="Pantalones" data-size="M">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Pantalones</span>
+            <h3 class="card-title">Jean Brut Selvedge</h3>
+            <p class="card-meta">Denim japonés 14oz · Talla M</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">120 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card catalog-card" data-category="Accesorios" data-size="Única">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Accesorios</span>
+            <h3 class="card-title">Casquette Laine</h3>
+            <p class="card-meta">Lana virgen · Talla única</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">39 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card catalog-card" data-category="Camisas" data-size="XS">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Camisas</span>
+            <h3 class="card-title">Blusa Atelier Ivoire</h3>
+            <p class="card-meta">Viscosa texturizada · Talla XS</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">88 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card catalog-card" data-category="Calzado" data-size="40">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Calzado</span>
+            <h3 class="card-title">Sandalias Atelier Sable</h3>
+            <p class="card-meta">Piel lisa y hebilla metálica · Talla 40</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">118 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card catalog-card" data-category="Pantalones" data-size="XS">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Pantalones</span>
+            <h3 class="card-title">Falda Plisada Cendre</h3>
+            <p class="card-meta">Malla estructurada · Talla XS</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">97 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card catalog-card" data-category="Accesorios" data-size="Única">
+          <div class="img-placeholder aspect-[3/4] w-full"></div>
+          <div class="px-3 pb-3 flex flex-col gap-1">
+            <span class="tag tag-neutral self-start">Accesorios</span>
+            <h3 class="card-title">Mini Tote Ardoise</h3>
+            <p class="card-meta">Lona encerada y cuero · Talla única</p>
+            <div class="flex items-center justify-between mt-1">
+              <p class="font-heading font-extrabold text-accent">84 €</p>
+              <button type="button" aria-label="Añadir al carrito" class="relative flex items-center justify-center w-7 h-7 rounded-full bg-accent text-bg hover:bg-accent-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.907-4.706 2.355-7.185a1.125 1.125 0 00-1.11-1.315H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 4.5m3 9.75h9.75" />
+                </svg>
+                <span class="absolute -top-1 -right-1 flex items-center justify-center w-3 h-3 rounded-full bg-bg text-accent text-[8px] font-bold leading-none">+</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
       </div>
     </section>
-    <!-- NUEVOS LANZAMIENTOS END -->
+    <!-- CATALOG END -->
 
-    <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 hidden" aria-hidden="true">
       <hr class="hr" />
     </div>
 
+    <!-- HOME SECTIONS HIDDEN START -->
     <!-- MÁS VENDIDOS START -->
-    <section class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16">
+    <section class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16 hidden" aria-hidden="true">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 sm:gap-4 mb-6 md:mb-8">
         <h2 class="font-heading font-extrabold text-2xl md:text-3xl text-text">Más vendidos</h2>
         <a href="#" class="nav-link whitespace-nowrap">Ver todos los más vendidos →</a>
@@ -488,8 +773,41 @@
       </div>
     </section>
     <!-- MÁS VENDIDOS END -->
+    <!-- HOME SECTIONS HIDDEN END -->
 
   </main>
+
+  <!-- CARRITO DRAWER START -->
+  <div id="cart-overlay" class="cart-overlay" hidden></div>
+
+  <aside id="cart-drawer" class="cart-drawer" aria-hidden="true" aria-labelledby="cart-drawer-title">
+    <div class="cart-drawer__header">
+      <div class="flex flex-col gap-2">
+        <span class="tag tag-neutral self-start">Carrito</span>
+        <h2 id="cart-drawer-title" class="font-heading font-extrabold text-2xl text-text">Tu selección</h2>
+      </div>
+      <button type="button" id="cart-close" class="btn btn-secondary btn-icon" aria-label="Cerrar carrito">×</button>
+    </div>
+
+    <div class="cart-drawer__body">
+      <p id="cart-empty" class="text-sm text-text-muted">Tu carrito está vacío. Añade productos desde la página principal.</p>
+      <ul id="cart-items" class="cart-drawer__list" aria-live="polite"></ul>
+    </div>
+
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__summary">
+        <span class="text-sm text-text-muted">Subtotal</span>
+        <strong id="cart-total" class="font-heading text-lg text-text">0 €</strong>
+      </div>
+      <div class="cart-drawer__actions">
+        <button type="button" id="cart-clear" class="btn btn-secondary">Vaciar</button>
+        <a href="#" class="btn btn-primary">Ir al checkout</a>
+      </div>
+    </div>
+  </aside>
+
+  <div id="cart-live-region" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+  <!-- CARRITO DRAWER END -->
 
   <!-- FOOTER START -->
   <footer class="bg-surface border-t border-divider">
@@ -543,6 +861,275 @@
     </div>
   </footer>
   <!-- FOOTER END -->
+
+  <script>
+    (() => {
+      const cartStorageKey = 'maison-vallon-cart';
+      const cartToggle = document.getElementById('cart-toggle');
+      const cartBadge = document.getElementById('cart-badge');
+      const cartDrawer = document.getElementById('cart-drawer');
+      const cartOverlay = document.getElementById('cart-overlay');
+      const cartClose = document.getElementById('cart-close');
+      const cartEmpty = document.getElementById('cart-empty');
+      const cartItems = document.getElementById('cart-items');
+      const cartTotal = document.getElementById('cart-total');
+      const cartClear = document.getElementById('cart-clear');
+      const cartLiveRegion = document.getElementById('cart-live-region');
+
+      if (!cartToggle || !cartBadge || !cartDrawer || !cartOverlay || !cartClose || !cartEmpty || !cartItems || !cartTotal || !cartClear || !cartLiveRegion) {
+        return;
+      }
+
+      const cartState = {
+        items: loadCart(),
+      };
+
+      function loadCart() {
+        try {
+          const storedCart = window.localStorage.getItem(cartStorageKey);
+          return storedCart ? JSON.parse(storedCart) : [];
+        } catch {
+          return [];
+        }
+      }
+
+      function saveCart() {
+        window.localStorage.setItem(cartStorageKey, JSON.stringify(cartState.items));
+      }
+
+      function getProductData(article) {
+        const title = article.querySelector('.card-title')?.textContent?.trim() || 'Producto';
+        const category = article.querySelector('.tag')?.textContent?.trim() || 'Categoría';
+        const meta = article.querySelector('.card-meta')?.textContent?.trim() || '';
+        const priceText = article.querySelector('.text-accent')?.textContent?.trim() || '0 €';
+        const price = Number.parseInt(priceText, 10) || 0;
+
+        return {
+          id: title.toLowerCase().replace(/[^a-z0-9]+/gi, '-'),
+          title,
+          category,
+          meta,
+          price,
+          quantity: 1,
+        };
+      }
+
+      function getTotalItems() {
+        return cartState.items.reduce((total, item) => total + item.quantity, 0);
+      }
+
+      function getTotalPrice() {
+        return cartState.items.reduce((total, item) => total + item.price * item.quantity, 0);
+      }
+
+      function openCart() {
+        cartDrawer.classList.add('is-open');
+        cartDrawer.setAttribute('aria-hidden', 'false');
+        cartToggle.setAttribute('aria-expanded', 'true');
+        cartOverlay.hidden = false;
+      }
+
+      function closeCart() {
+        cartDrawer.classList.remove('is-open');
+        cartDrawer.setAttribute('aria-hidden', 'true');
+        cartToggle.setAttribute('aria-expanded', 'false');
+        cartOverlay.hidden = true;
+      }
+
+      function renderCart() {
+        const totalItems = getTotalItems();
+        const totalPrice = getTotalPrice();
+
+        cartBadge.textContent = String(totalItems);
+        cartBadge.hidden = totalItems === 0;
+        cartToggle.setAttribute('aria-label', totalItems === 0 ? 'Abrir carrito vacío' : `Abrir carrito, ${totalItems} artículo${totalItems === 1 ? '' : 's'}`);
+        cartTotal.textContent = `${totalPrice} €`;
+        cartItems.innerHTML = '';
+        cartClear.disabled = totalItems === 0;
+
+        if (cartState.items.length === 0) {
+          cartEmpty.hidden = false;
+          return;
+        }
+
+        cartEmpty.hidden = true;
+
+        cartState.items.forEach((item) => {
+          const row = document.createElement('li');
+          row.className = 'cart-item';
+
+          const copy = document.createElement('div');
+          copy.className = 'cart-item__copy';
+
+          const title = document.createElement('h3');
+          title.className = 'cart-item__title';
+          title.textContent = item.title;
+
+          const meta = document.createElement('p');
+          meta.className = 'cart-item__meta';
+          meta.textContent = `${item.category} · ${item.meta}`;
+
+          const details = document.createElement('div');
+          details.className = 'cart-item__details';
+
+          const quantity = document.createElement('span');
+          quantity.className = 'cart-item__quantity';
+          quantity.textContent = `x${item.quantity}`;
+
+          const price = document.createElement('strong');
+          price.className = 'cart-item__price';
+          price.textContent = `${item.price * item.quantity} €`;
+
+          const removeButton = document.createElement('button');
+          removeButton.type = 'button';
+          removeButton.className = 'btn btn-ghost';
+          removeButton.dataset.cartRemove = item.id;
+          removeButton.textContent = 'Eliminar';
+          removeButton.setAttribute('aria-label', `Eliminar ${item.title} del carrito`);
+
+          copy.append(title, meta);
+          details.append(quantity, price, removeButton);
+          row.append(copy, details);
+          cartItems.append(row);
+        });
+      }
+
+      document.addEventListener('click', (event) => {
+        const addButton = event.target.closest('button[aria-label="Añadir al carrito"]');
+
+        if (!addButton) {
+          return;
+        }
+
+        const article = addButton.closest('article');
+
+        if (!article) {
+          return;
+        }
+
+        const product = getProductData(article);
+        const existingItem = cartState.items.find((item) => item.id === product.id);
+
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cartState.items.push(product);
+        }
+
+        saveCart();
+        renderCart();
+        openCart();
+        cartLiveRegion.textContent = `${product.title} añadido al carrito`;
+      });
+
+      cartToggle.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        if (cartDrawer.classList.contains('is-open')) {
+          closeCart();
+          return;
+        }
+
+        openCart();
+      });
+
+      cartClose.addEventListener('click', closeCart);
+      cartOverlay.addEventListener('click', closeCart);
+
+      cartItems.addEventListener('click', (event) => {
+        const removeButton = event.target.closest('[data-cart-remove]');
+
+        if (!removeButton) {
+          return;
+        }
+
+        cartState.items = cartState.items.filter((item) => item.id !== removeButton.dataset.cartRemove);
+        saveCart();
+        renderCart();
+        cartLiveRegion.textContent = 'Producto eliminado del carrito';
+      });
+
+      cartClear.addEventListener('click', () => {
+        cartState.items = [];
+        saveCart();
+        renderCart();
+        cartLiveRegion.textContent = 'Carrito vaciado';
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && cartDrawer.classList.contains('is-open')) {
+          closeCart();
+        }
+      });
+
+      renderCart();
+    })();
+
+    (() => {
+      const filterTriggers = document.querySelectorAll('.filter-trigger');
+      const categorySelect = document.getElementById('filter-category-select');
+      const sizeSelect = document.getElementById('filter-size-select');
+      const catalogSearch = document.getElementById('catalog-search');
+      const catalogCards = document.querySelectorAll('.catalog-card');
+      const catalogCount = document.getElementById('catalog-count');
+
+      if (filterTriggers.length === 0 || !categorySelect || !sizeSelect || !catalogSearch || catalogCards.length === 0 || !catalogCount) {
+        return;
+      }
+
+      function applyFilters() {
+        const categoryValue = categorySelect.value;
+        const sizeValue = sizeSelect.value;
+        const searchValue = catalogSearch.value.trim().toLowerCase();
+        let visibleCount = 0;
+
+        catalogCards.forEach((card) => {
+          const matchesCategory = categoryValue === 'Todas las categorías' || card.dataset.category === categoryValue;
+          const matchesSize = sizeValue === 'Todas las tallas' || card.dataset.size === sizeValue;
+          const searchableText = [
+            card.querySelector('.card-title')?.textContent,
+            card.querySelector('.card-meta')?.textContent,
+            card.dataset.category,
+            card.dataset.size,
+          ]
+            .filter(Boolean)
+            .join(' ')
+            .toLowerCase();
+          const matchesSearch = searchValue === '' || searchableText.includes(searchValue);
+          const isVisible = matchesCategory && matchesSize && matchesSearch;
+
+          card.hidden = !isVisible;
+
+          if (isVisible) {
+            visibleCount += 1;
+          }
+        });
+
+        catalogCount.textContent = `Mostrando ${visibleCount} producto${visibleCount === 1 ? '' : 's'}`;
+      }
+
+      filterTriggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          const panelId = trigger.getAttribute('data-filter-target');
+          const panel = panelId ? document.getElementById(panelId) : null;
+
+          if (!panel) {
+            return;
+          }
+
+          const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+          trigger.setAttribute('aria-expanded', String(!isOpen));
+          panel.hidden = isOpen;
+        });
+      });
+
+      categorySelect.addEventListener('change', applyFilters);
+      sizeSelect.addEventListener('change', applyFilters);
+      catalogSearch.addEventListener('input', applyFilters);
+
+      applyFilters();
+    })();
+  </script>
 
 </body>
 </html>
