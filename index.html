@@ -198,9 +198,16 @@
     <section
       class="relative overflow-hidden"
       style="background-image: linear-gradient(135deg, var(--color-neutral-900), var(--color-neutral-800)), repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 2px, transparent 2px 14px);"
-      aria-label="Colección destacada"
+      aria-roledescription="carrusel"
+      aria-label="Colecciones destacadas"
     >
-      <div class="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 lg:py-32 flex flex-col items-start gap-4 md:gap-6">
+      <!-- Controles de estado del carrusel (sin JS: radios ocultos que gobiernan qué diapositiva se muestra) -->
+      <input type="radio" name="hero-slide" id="hero-slide-1" class="sr-only peer/s1" checked />
+      <input type="radio" name="hero-slide" id="hero-slide-2" class="sr-only peer/s2" />
+      <input type="radio" name="hero-slide" id="hero-slide-3" class="sr-only peer/s3" />
+
+      <!-- Diapositiva 1 -->
+      <div class="hidden peer-checked/s1:flex max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 lg:py-32 flex-col items-start gap-4 md:gap-6" role="group" aria-roledescription="diapositiva" aria-label="1 de 3">
         <span class="tag bg-accent text-bg">COLECCIÓN OTOÑO</span>
         <h1 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-bg max-w-2xl">
           Piezas atemporales, hechas para durar
@@ -211,23 +218,68 @@
         <a href="#" class="btn btn-primary mt-2">Descubrir la colección Otoño</a>
       </div>
 
-      <!-- Flechas de navegación (solo visuales) -->
-      <button type="button" aria-label="Slide anterior" class="hidden sm:flex absolute left-3 md:left-6 top-1/2 -translate-y-1/2 items-center justify-center w-10 h-10 text-bg/80 hover:text-bg">
+      <!-- Diapositiva 2 -->
+      <div class="hidden peer-checked/s2:flex max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 lg:py-32 flex-col items-start gap-4 md:gap-6" role="group" aria-roledescription="diapositiva" aria-label="2 de 3">
+        <span class="tag bg-accent text-bg">NUEVA TEMPORADA</span>
+        <h1 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-bg max-w-2xl">
+          Confección artesanal, a tu medida
+        </h1>
+        <p class="text-sm md:text-base text-neutral-300 max-w-md">
+          Cada prenda se confecciona a mano en nuestros talleres de Francia, con acabados pensados para durar.
+        </p>
+        <a href="#" class="btn btn-primary mt-2">Ver nueva temporada</a>
+      </div>
+
+      <!-- Diapositiva 3 -->
+      <div class="hidden peer-checked/s3:flex max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 lg:py-32 flex-col items-start gap-4 md:gap-6" role="group" aria-roledescription="diapositiva" aria-label="3 de 3">
+        <span class="tag bg-accent text-bg">EDICIÓN LIMITADA</span>
+        <h1 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-bg max-w-2xl">
+          Piezas únicas, producción limitada
+        </h1>
+        <p class="text-sm md:text-base text-neutral-300 max-w-md">
+          Series cortas para quienes buscan algo distinto, con materiales de origen certificado.
+        </p>
+        <a href="#" class="btn btn-primary mt-2">Explorar la edición limitada</a>
+      </div>
+
+      <!-- Flechas de navegación (una por cada diapositiva activa; solo la de la diapositiva actual queda visible) -->
+      <label for="hero-slide-3" aria-label="Slide anterior" class="hidden sm:peer-checked/s1:flex absolute left-3 md:left-6 top-1/2 -translate-y-1/2 items-center justify-center w-10 h-10 text-bg/80 hover:text-bg cursor-pointer">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
         </svg>
-      </button>
-      <button type="button" aria-label="Siguiente slide" class="hidden sm:flex absolute right-3 md:right-6 top-1/2 -translate-y-1/2 items-center justify-center w-10 h-10 text-bg/80 hover:text-bg">
+      </label>
+      <label for="hero-slide-1" aria-label="Slide anterior" class="hidden sm:peer-checked/s2:flex absolute left-3 md:left-6 top-1/2 -translate-y-1/2 items-center justify-center w-10 h-10 text-bg/80 hover:text-bg cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+      </label>
+      <label for="hero-slide-2" aria-label="Slide anterior" class="hidden sm:peer-checked/s3:flex absolute left-3 md:left-6 top-1/2 -translate-y-1/2 items-center justify-center w-10 h-10 text-bg/80 hover:text-bg cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+      </label>
+
+      <label for="hero-slide-2" aria-label="Siguiente slide" class="hidden sm:peer-checked/s1:flex absolute right-3 md:right-6 top-1/2 -translate-y-1/2 items-center justify-center w-10 h-10 text-bg/80 hover:text-bg cursor-pointer">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
         </svg>
-      </button>
+      </label>
+      <label for="hero-slide-3" aria-label="Siguiente slide" class="hidden sm:peer-checked/s2:flex absolute right-3 md:right-6 top-1/2 -translate-y-1/2 items-center justify-center w-10 h-10 text-bg/80 hover:text-bg cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </label>
+      <label for="hero-slide-1" aria-label="Siguiente slide" class="hidden sm:peer-checked/s3:flex absolute right-3 md:right-6 top-1/2 -translate-y-1/2 items-center justify-center w-10 h-10 text-bg/80 hover:text-bg cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </label>
 
-      <!-- Dots indicadores (solo visuales) -->
-      <div class="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-bg"></span>
-        <span class="w-2 h-2 rounded-full bg-bg/40"></span>
-        <span class="w-2 h-2 rounded-full bg-bg/40"></span>
+      <!-- Dots indicadores (activan directamente la diapositiva correspondiente) -->
+      <div class="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 peer-checked/s1:[&>label:nth-child(1)]:bg-bg peer-checked/s2:[&>label:nth-child(2)]:bg-bg peer-checked/s3:[&>label:nth-child(3)]:bg-bg">
+        <label for="hero-slide-1" aria-label="Ir a la diapositiva 1" class="w-2 h-2 rounded-full bg-bg/40 cursor-pointer"></label>
+        <label for="hero-slide-2" aria-label="Ir a la diapositiva 2" class="w-2 h-2 rounded-full bg-bg/40 cursor-pointer"></label>
+        <label for="hero-slide-3" aria-label="Ir a la diapositiva 3" class="w-2 h-2 rounded-full bg-bg/40 cursor-pointer"></label>
       </div>
     </section>
     <!-- HERO END -->
