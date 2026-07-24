@@ -14,9 +14,9 @@ El cliente solicitó un prototipo de tienda online con **5 vistas principales**,
 |---|---|---|
 | **Home** | Navbar, hero de campaña, listados de "Nuevos lanzamientos" y "Más vendidos", footer | ✅ |
 | **Catálogo** | Listado de productos en grid con filtros por categoría y talla | 🔄 |
-| **Vista de producto** | Ficha de producto a dos columnas (imagen + info) con descripción detallada | 🔄 |
-| **Carrito** | Vista completa con productos añadidos y resumen de totales | 🔄 |
-| **Checkout** | Formulario de pago en 3 pasos (datos personales, dirección, tarjeta) | 🔄 |
+| **Vista de producto** | Ficha de producto a dos columnas (imagen + info) con descripción detallada | ✅ |
+| **Carrito** | Vista completa con productos añadidos y resumen de totales | ✅ |
+| **Checkout** | Formulario de pago en 3 pasos (datos personales, dirección, tarjeta) | ✅ |
 
 ## 🎨 Diseño
 
