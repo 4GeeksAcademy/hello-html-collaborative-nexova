@@ -1,41 +1,71 @@
-# HTML Hello
+# Maison Vallon — Prototipo de tienda online
 
-The most basic boilerplate for any 4Geeks Academy student, start your very first website from scratch.
+![Maison Vallon — Prototipo de tienda online](assets/banner.png)
 
-> There is a video tutorial on [how to use this template to create your very first website here](https://youtu.be/dfbDCMu_p-0).
+Prototipo visual y funcional de e-commerce desarrollado como simulación de proyecto de consultora para una marca de ropa con sede en Francia. El objetivo es validar con el cliente el diseño, la navegación y la experiencia de compra antes de pasar a desarrollo completo.
 
-## What to do next?
+## 📋 Descripción
 
-Create an `index.html` file with the [basic HTML structure](http://4geeks.com/lesson/what-is-html-learn-html#page-structure) and see it live by running a web-server using the following command:
+El cliente solicitó un prototipo de tienda online con **5 vistas principales**, cuidando SEO, diseño moderno y consistente, y una experiencia totalmente responsive (móvil, tablet y escritorio).
 
-```bash
-$ pip3 install flask && python3 server.py
+## 🖥️ Vistas del prototipo
+
+| Vista | Descripción | Estado |
+|---|---|---|
+| **Home** | Navbar, hero de campaña, listados de "Nuevos lanzamientos" y "Más vendidos", footer | ✅ |
+| **Catálogo** | Listado de productos en grid con filtros por categoría y talla | 🔄 |
+| **Vista de producto** | Ficha de producto a dos columnas (imagen + info) con descripción detallada | 🔄 |
+| **Carrito** | Vista completa con productos añadidos y resumen de totales | 🔄 |
+| **Checkout** | Formulario de pago en 3 pasos (datos personales, dirección, tarjeta) | 🔄 |
+
+## 🎨 Diseño
+
+- Diseño moderno y minimalista, con acentos en color terracota sobre base clara
+- Navbar y footer comunes a todas las vistas, para mantener coherencia visual en todo el sitio
+- Sistema de diseño (colores, tipografía, espaciados) centralizado en `styles.css` para que cualquier vista nueva se integre sin desajustes
+
+## 🛠️ Stack tecnológico
+
+- **HTML5 semántico** — estructura accesible y orientada a SEO (`header`, `nav`, `main`, `section`, `article`, `footer`)
+- **Tailwind CSS** — utilidades para maquetación y responsive
+- **CSS** (`styles.css`) — variables y estilos genéricos compartidos entre vistas
+
+## 📁 Estructura del proyecto
+
+```
+├── index.html          # Home
+├── catalogo.html        # Catálogo
+├── producto.html         # Vista de producto
+├── carrito.html          # Carrito
+├── checkout.html          # Checkout (3 pasos)
+├── styles.css            # Estilos y design tokens compartidos
+└── assets/                # Imágenes e iconos
 ```
 
-- You can create as many HTML files as you want.
-- You can also create CSS files and import them into your website using a `<link>` tag placed between the `<head></head>` tags, like this:
+## ✅ Requisitos cubiertos
 
-```html
-<head>
-  ...
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  ...
-</head>
-```
+- [x] Estructura HTML5 semántica
+- [x] SEO on-page (jerarquía de encabezados, meta tags, alt en imágenes)
+- [x] Diseño responsive (móvil / tablet / escritorio)
+- [x] Navbar y footer reutilizables en todas las vistas
+- [ ] Las 5 vistas completas e integradas
 
-- If you want to use Tailwind CSS, add it optionally via the official Tailwind CSS v4 CDN inside the same `<head>`:
+## 🚀 Cómo verlo en local
 
-```html
-<head>
-  ...
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  ...
-</head>
-```
+Es un prototipo estático, sin build ni dependencias que instalar:
 
-### Contributors
+1. Clona el repositorio
+2. Abre `index.html` en el navegador, o sírvelo con una extensión tipo *Live Server* en VS Code para navegar entre las vistas
 
-This template was built as part of the [Full Stack Developer course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer) at [4Geeks Academy Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and [many other contributors](https://github.com/4GeeksAcademy/html-hello/graphs/contributors).
+## 👥 Equipo
 
-You can find other templates and resources like this at the [school's GitHub page](https://github.com/4geeksacademy/).
+Proyecto desarrollado en equipo dentro de una consultora simulada:
+
+- **Home, navbar y footer** — [@AlbertoBeCi](https://github.com/AlbertoBeCi)
+- **Catálogo** — [@christiansquitieri1999](https://github.com/christiansquitieri1999)
+- **Producto** — [@luisArrieta](https://github.com/luisArrieta)
+- **Carrito y checkout** — compañero/a de equipo
+
+## 📄 Licencia
+
+Proyecto académico con fines educativos.
