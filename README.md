@@ -64,7 +64,8 @@ Proyecto desarrollado en equipo dentro de una consultora simulada:
 - **Home, navbar y footer** — [@AlbertoBeCi](https://github.com/AlbertoBeCi)
 - **Catálogo** — [@christiansquitieri1999](https://github.com/christiansquitieri1999)
 - **Producto** — [@luisArrieta](https://github.com/luisArrieta)
-- **Carrito y checkout** — compañero/a de equipo
+- **Carrito** - Alvaro
+- **Formulario de pago y checkout** - Jeferson
 
 ## 📄 Licencia
 
